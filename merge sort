@@ -1,0 +1,54 @@
+public class MergeSort {
+    
+    public static void mergesort(int[] arr) {
+        mergesort(arr, 0, arr.length - 1);
+    }
+
+    private static void mergesort(int[] arr, int leftStart, int rightEnd) {
+        if (leftStart >= rightEnd) {
+            return;
+        }
+
+        int middle = leftStart + (rightEnd - leftStart)/2;
+        mergesort(arr, leftStart, middle);
+        mergesort(arr, middle+1, rightEnd);
+        merge(arr, leftStart, middle, rightEnd);
+    }
+
+    private static void merge(int[] arr, int leftStart, int middle, int rightEnd) {
+        int leftEnd = middle;
+        int rightStart = middle+1;
+
+        int[] temp = new int[arr.length];
+        int index = leftStart;
+
+        int left = leftStart;
+        int right = rightStart;
+        while (left <= leftEnd && right <= rightEnd) {
+            if (arr[left] <= arr[right]) {
+                temp[index] = arr[left];
+                left++;
+            } else {
+                temp[index] = arr[right];
+                right++;
+            }
+            index++;
+        }
+        System.arraycopy(arr, left, temp, index, leftEnd-left+1);
+        System.arraycopy(arr, right, temp, index, rightEnd-right+1);
+        System.arraycopy(temp, leftStart, arr, leftStart, rightEnd-leftStart+1);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {3, 56, 6, 78, 5, 21, 13, 20, 8, 10};
+        for (int n : arr) {
+            System.out.print(n + " ");
+        }
+        System.out.println();
+        mergesort(arr);
+        for (int n : arr) {
+            System.out.print(n + " ");
+        }
+        System.out.println();
+    }
+}
