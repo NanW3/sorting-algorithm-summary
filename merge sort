@@ -1,3 +1,9 @@
+/**
+*  time complexity: o(nlogn)
+*  space complexity: o(n)
+*/
+
+
 public class MergeSort {
     
     public static void mergesort(int[] arr) {
