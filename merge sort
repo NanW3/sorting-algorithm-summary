@@ -1,7 +1,10 @@
 /**
+*  @author Nan Wang
+*  @Version 1.0
 *  time complexity: o(nlogn)
 *  space complexity: o(n)
 */
+
 
 
 public class MergeSort {
